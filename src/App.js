@@ -1,24 +1,67 @@
-import logo from './logo.svg';
 import './App.css';
+import React from "react"
+import {
+  Routes,
+  Route,
+} from "react-router-dom";
+import Nav from "./components/Nav"
+import MainWebsite from "./components/MainWebsite"
+import Footer from "./components/Footer"
+import RestaurantsPage from "./components/RestaurantsPage"
+import RestaurantPage from "./components/RestaurantPage"
+import ErrorPage from "./components/ErrorPage"
 
 function App() {
+  const [dropdownState, changeDropdownState] = React.useState(true)
+
+  function changeMenuState() {
+    changeDropdownState(!dropdownState);
+  }
+
+  !dropdownState ? document.body.style.overflow = "hidden" : document.body.style.overflow = "initial"
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Routes>
+      <Route path="/" element={
+        <>
+          <Nav 
+            changeMenuState={changeMenuState}
+            dropdownState={dropdownState}
+          />
+          <MainWebsite />
+          <Footer />
+        </>
+      } />
+      <Route path="/restaurants" element={
+        <>
+          <Nav 
+            changeMenuState={changeMenuState}
+            dropdownState={dropdownState}
+          />
+          <RestaurantsPage />
+          <Footer />
+        </>
+      } />
+      <Route path="/restaurants/:index" element={
+        <>
+          <Nav 
+            changeMenuState={changeMenuState}
+            dropdownState={dropdownState}
+          />
+          <RestaurantPage />
+          <Footer />
+        </>
+      } />
+      <Route path="*" element={
+        <>
+          <Nav 
+            changeMenuState={changeMenuState}
+            dropdownState={dropdownState}
+          />
+          <ErrorPage />
+          <Footer />
+        </>
+      } />
+    </Routes>
   );
 }
 

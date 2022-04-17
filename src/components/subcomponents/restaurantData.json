@@ -1,0 +1,113 @@
+[
+    {
+        "header": "Milestone's Grill",
+        "description": "Milestone's Restaurants is a restaurant chain headquartered in Vaughanm, Ontario, Cananada. There are currently 40 locations across BC",
+        "stars": 4,
+        "questions": [
+            true,
+            false,
+            true,
+            true,
+            false,
+            true,
+            true,
+            true,
+            true,
+            false,
+            true,
+            true,
+            false,
+            true,
+            false,
+            true,
+            true,
+            true,
+            false,
+            false,
+            false,
+            true,
+            true,
+            true
+        ],
+        "images": [
+            "https://static.grainews.ca/wp-content/uploads/2021/06/17025907/milestones.jpeg",
+            "https://ssmscdn.yp.ca/image/resize/31c52ed7-9eb7-4b66-9600-cc933c70b476/ypui-d-mp-pic-gal-lg/milestones-1.jpg",
+            "https://foodgressing.com/wp-content/uploads/2015/02/IMG_1713-copy1.jpg.webp",
+            "https://s3-media0.fl.yelpcdn.com/bphoto/tdr58T1ZI7DGzcVFEdzXgw/l.jpg"
+        ]
+    },
+    {
+        "header": "Old Spaghetti Factory",
+        "description": "The Old Spaghetti Factory is an Italian-American-style chain restaurant in the United States and Canada. It features old fashioned art in their restaurants",
+        "stars": 3,
+        "questions": [
+            false,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            false,
+            true,
+            true,
+            true,
+            false,
+            false,
+            true,
+            false,
+            true,
+            false,
+            true,
+            true,
+            false,
+            true,
+            true,
+            true,
+            false
+        ],
+        "images": [
+            "https://media.blogto.com/listings/20211125-OldSpaghettiFactory15.jpg?w=2048&cmd=resize_then_crop&height=1365&quality=70",
+            "https://images.seattletimes.com/wp-content/uploads/2016/12/5298c336-c702-11e6-a4d5-c8fe1e20bb7b.jpg?d=1200x630",
+            "https://oldspaghettifactory.ca/wp-content/uploads/2020/12/OSF-071020-image-1066.jpg",
+            "https://www.osf.com/wp-content/uploads/2018/10/History-Page-clackamas-trolley-dinning-room-600x443.jpg"
+        ]
+    },
+    {
+        "header": "McDonald's Burgers",
+        "description": "McDonald's is one of the biggest francises on earth. It is a multinational food company found by Richard and Maurice",
+        "stars": 2,
+        "questions": [
+            true,
+            true,
+            false,
+            false,
+            true,
+            true,
+            false,
+            false,
+            true,
+            false,
+            true,
+            true,
+            false,
+            false,
+            false,
+            true,
+            false,
+            true,
+            false,
+            true,
+            true,
+            false,
+            false,
+            false
+        ],
+        "images": [
+            "https://www.eatthis.com/wp-content/uploads/sites/4/2021/06/mcdonalds-2.jpg?quality=82&strip=1",
+            "https://www.built-environment-networking.com/content/uploads/2021/06/McDonalds.jpg",
+            "https://imagesvc.meredithcorp.io/v3/mm/image?url=https%3A%2F%2Fstatic.onecms.io%2Fwp-content%2Fuploads%2Fsites%2F9%2F2022%2F01%2F26%2FMcDonalds-Hacks-Menu-FT-1-BLOG0122.jpg&q=60",
+            "https://img.etimg.com/thumb/msid-62443748,width-1200,height-900,imgsize-93111,overlay-economictimes/photo.jpg"
+        ]
+    }
+]

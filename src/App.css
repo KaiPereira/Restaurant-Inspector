@@ -1,38 +1,822 @@
-.App {
-  text-align: center;
-}
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+::-webkit-scrollbar-track {
+  background: transparent;
 }
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+::-webkit-scrollbar {
+  width: 15px;
+  overflow: hidden;
+}
+::-webkit-scrollbar-thumb {
+  border: 5px solid rgba(0, 0, 0, 0);
+  background-clip: padding-box;
+  border-radius: 10px;
+  background-color: #dbdbdb;
+}
+::-webkit-scrollbar-thumb:hover {
+  background-color: #cccccc;
+}
+::selection {
+  background: #82DA3D;
+  color: #fff;
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  font-family: 'Inter', sans-serif;
+}
+html {
+  scroll-behavior: smooth;
+}
+nav {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  height: 85px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.11);
+  padding: 0px 170px;
+}
+.navItems {
+  display: flex;
+  align-items: center;
+}
+.navItem {
+  display: flex;
+  flex-flow: column;
+  margin: 0px 50px;
+  height: 100%;
+}
+.navItemText {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 24px;
+  letter-spacing: 0.05em;
+}
+.navItemText a {
+  cursor: pointer;
+  color: #545454;
+  text-decoration: none;
+}
+.navItemHover {
+  height: 4px;
+  width: 100%;
+  transition: background 0.5s;
+}
+.navItemHoverActive {
+  background: #82DA3D;
+}
+.navItemButton {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 250px;
+  height: 50px;
+  border: 2px solid #82DA3D;
+  border-radius: 25px;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 22px;
+  letter-spacing: 0.05em;
+  color: #82DA3D;
+  margin-left: 65px;
+  cursor: pointer;
+  transition: background 0.5s, color 0.5s;
+  text-decoration: none;
+}
+.navItemButton:hover {
+  background: #82DA3D;
+  color: #fff;
+}
+.dropdownIcons {
+  display: none;
+  align-items: center;
+  font-size: 35px;
+  cursor: pointer;
+}
+@media screen and (max-width: 1400px) {
+  nav {
+    padding: 0px 100px;
+  }
+  .navItem {
+    margin: 0px 40px;
   }
 }
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+@media screen and (max-width: 1200px) {
+  .navItems {
+    display: none;
+  }
+  .dropdownIcons {
+    display: flex;
+  }
+}
+.dropdownContainer {
+  position: absolute;
   display: flex;
-  flex-direction: column;
+  justify-content: flex-end;
+  visibility: hidden;
+  width: 100%;
+  height: calc(100vh - 85px);
+  overflow: hidden;
+}
+.dropdown {
+  position: absolute;
+  visibility: visible;
+  width: 45%;
+  right: -50%;
+  height: 100%;
+  background: #fff;
+  box-shadow: -4px 0px 10px rgba(0, 0, 0, 0.11);
+  overflow: hidden;
+  transition: 0.5s;
+  z-index: 10;
+}
+.dropdownActivated {
+  right: 0%;
+}
+.dropdownItem {
+  width: 100%;
+  margin: 50px 0px;
+}
+.dropdownItemEffect {
+  display: flex;
+  align-items: center;
+  height: 80px;
+  width: 100%;
+  margin-left: 50px;
+  background: transparent;
+  border-radius: 100px 0px 0px 100px;
+  transition: background 0.5s;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 24px;
+  letter-spacing: 0.05em;
+  color: #545454;
+  padding-left: 50px;
+  transition: background 0.5s, color 0.5s;
+  cursor: pointer;
+  text-decoration: none;
+}
+.dropdownItemEffect:hover {
+  background: #82DA3D;
+  color: #fff;
+}
+.dropdownButtonContainer {
+  display: flex;
+  justify-content: center;
+  margin-top: 100px;
+}
+.navDropdownButton {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 60%;
+  height: 65px;
+  border: 2px solid #82DA3D;
+  border-radius: 100px;
+  cursor: pointer;
+  transition: background 0.5s, color 0.5s;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 24px;
+  letter-spacing: 0.05em;
+  color: #545454;
+  text-decoration: none;
+}
+.navDropdownButton:hover {
+  background: #82DA3D;
+  color: #fff;
+}
+@media screen and (max-width: 900px) {
+  .navDropdownButton {
+    width: 85%;
+  }
+}
+@media screen and (max-width: 650px) {
+  .dropdown {
+    width: 100%;
+    top: -100%;
+    right: 0%;
+  }
+  .dropdownActivated {
+    top: 0%;
+  }
+  .dropdownItemEffect {
+    justify-content: center;
+    margin-left: 0px;
+    padding-left: 0px;
+    border-radius: initial;
+  }
+  nav {
+    padding: 0px 50px;
+  }
+}
+.main {
+  padding: 0px 120px;
+  padding-top: 160px;
+  background: url(Logo.png);
+  background-repeat: no-repeat;
+  background-position: 90% 80%;
+}
+.main h1 {
+  font-weight: 600;
+  font-size: 50px;
+  line-height: 70px;
+  letter-spacing: 0.05em;
+  color: #474747;
+  max-width: 660px;
+}
+.main p {
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 35px;
+  letter-spacing: 0.05em;
+  color: #A3A3A3;
+  margin-top: 90px;
+  max-width: 700px;
+}
+.mainButton {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 375px;
+  height: 65px;
+  background: #82DA3D;
+  border: 2px solid #82DA3D;
+  border-radius: 100px;
+  margin-top: 90px;
+  cursor: pointer;
+  font-weight: 700;
+  font-size: 22px;
+  line-height: 27px;
+  letter-spacing: 0.05em;
+  color: #FFFFFF;
+  transition: background 0.5s, color 0.5s;
+  text-decoration: none;
+}
+.mainButton:hover {
+  background: transparent;
+  color: #545454;
+}
+@media screen and (max-width: 1050px) {
+  .main {
+    background: none;
+  }
+}
+@media screen and (max-width: 935px) {
+  .main h1 {
+    text-align: center;
+  }
+  .main p {
+    text-align: center;
+  }
+  .main {
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    padding: 0px 30px;
+    padding-top: 120px;
+  }
+}
+@media screen and (max-width: 750px) {
+  .main h1 {
+    font-size: 40px;
+    line-height: 55px;
+  }
+  .main p {
+    font-size: 15px;
+    line-height: 30px;
+  }
+}
+@media screen and (max-width: 600px) {
+  .mainButton {
+    width: 250px;
+    height: 60px;
+    font-size: 18px;
+  }
+}
+@media screen and (max-width: 425px) {
+  .main h1 {
+    font-size: 24px;
+    line-height: 38px;
+  }
+  .main p {
+    font-size: 13px;
+    line-height: 25px;
+    margin-top: 50px;
+  }
+  .mainButton {
+    width: 225px;
+    height: 50px;
+    font-size: 16px;
+    margin-top: 50px;
+  }
+}
+.mission {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  text-align: center;
+  margin-top: 150px;
+  padding: 0px 20px;
+}
+.arrow {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-top: 120px;
+  font-weight: 900;
+  font-size: 35px;
+  color: #82DA3D;
+}
+.mission h2 {
+  font-weight: 700;
+  font-size: 60px;
+  line-height: 100px;
+  letter-spacing: 0.05em;
+  color: #404040;
+}
+.mission h2 span {
+  font-weight: 400;
+  font-size: 70px;
+  line-height: 100px;
+  letter-spacing: 0.25em;
+  color: #404040;
+}
+.missionHeaderLine {
+  width: 100%;
+  max-width: 500px;
+  height: 3px;
+  background: #82DA3D;
+  margin-top: 40px;
+}
+.mission p {
+  font-weight: 500;
+  font-size: 25px;
+  line-height: 40px;
+  color: #A5A5A5;
+  margin-top: 70px;
+  max-width: 665px;
+}
+.missionButton {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 100px;
+  width: 375px;
+  height: 65px;
+  background: #82DA3D;
+  border: 2px solid #82DA3D;
+  border-radius: 100px;
+  font-weight: 700;
+  font-size: 22px;
+  letter-spacing: 0.05em;
+  color: #fff;
+  cursor: pointer;
+  transition: color 0.5s, background 0.5s;
+  text-decoration: none;
+}
+.missionButton:hover {
+  background: transparent;
+  color: #545454;
+}
+@media screen and (max-width: 500px) {
+  .mission p {
+    font-size: 20px;
+    line-height: 35px;
+  }
+  .missionButton {
+    width: 300px;
+    font-size: 20px;
+  }
+}
+@media screen and (max-width: 400px) {
+  .mission h2 {
+    font-size: 40px;
+    line-height: 70px;
+  }
+  .mission h2 span {
+    font-size: 50px;
+    line-height: 70px;
+  }
+  .mission p {
+    font-size: 15px;
+    line-height: 30px;
+  }
+  .missionButton {
+    width: 250px;
+  }
+}
+.specialists {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  text-align: center;
+  margin-top: 325px;
+  margin-bottom: 280px;
+}
+.specialists h3 {
+  font-weight: 500;
+  font-size: 60px;
+  color: #484848;
+}
+.specialistsHeaderLine {
+  width: 100%;
+  max-width: 450px;
+  height: 3px;
+  background: #82DA3D;
+  margin-top: 25px;
+}
+.specialistsDescription {
+  font-weight: 500;
+  font-size: 25px;
+  line-height: 40px;
+  color: #B0B0B0;
+  margin-top: 50px;
+  width: 100%;
+  max-width: 800px;
+  padding: 0px 20px;
+}
+.specialistsExamplesHeader {
+  margin-top: 170px;
+  font-weight: 500;
+  font-size: 30px;
+  color: #505050;
+}
+.specialistExamples {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  padding: 0px 50px;
+}
+.specialistExample {
+  display: flex;
+  width: 340px;
+  margin: 0px 35px;
+  padding: 20px;
+  box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.11);
+  border-radius: 15px;
+  margin-top: 90px;
+}
+.specialistImage {
+  width: 50px;
+  height: 50px;
+  border-radius: 100px;
+  flex: none;
+  object-fit: cover;
+}
+.specialistName {
+  font-weight: 500;
+  font-size: 20px;
+  letter-spacing: 0.05em;
+  color: #333333;
+  margin-top: 10px;
+}
+.specialistExamplePadding {
+  padding-left: 28px; 
+  text-align: left;
+}
+.specialistDescription {
+  font-weight: 500;
+  font-size: 15px;
+  line-height: 23px;
+  letter-spacing: 0.05em;
+  color: #9B9B9B;
+  margin-top: 20px;
+}
+@media screen and (max-width: 500px) {
+  .specialistExamples {
+    padding: 0px 25px;
+  }
+  .specialistExample {
+    flex-flow: column;
+    align-items: center;
+    text-align: center;
+    margin: 0px;
+    margin-top: 90px;
+    width: 100%;
+  }
+  .specialistExamplePadding {
+    padding: 0px;
+    text-align: center;
+    margin-top: 40px;
+  }
+  .specialists h3 {
+    font-size: 35px;
+  }
+  .specialistsHeaderLine {
+    max-width: 250px;
+  }
+  .specialistsDescription {
+    font-size: 20px;
+    line-height: 35px;
+  }
+}
+@media screen and (max-width: 350px) {
+  .specialistsDescription {
+    font-size: 15px;
+    line-height: 30px;
+  }
+}
+footer {
+  display: flex;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  width: 100%;
+  padding: 30px 0px;
+  background: #F8F8F8;
 }
-
-.App-link {
-  color: #61dafb;
+footer img {
+  margin: 0px 55px;
 }
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+footer p {
+  font-weight: 500;
+  font-size: 23px;
+  color: #82DA3D;
+}
+footer p:last-child {
+  cursor: pointer;
+}
+@media screen and (max-width: 600px) {
+  footer {
+    flex-flow: column;
   }
-  to {
-    transform: rotate(360deg);
+  footer img {
+    margin: 25px 0px;
   }
+}
+.restaurants {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  margin-top: 150px;
+}
+.restaurantSearch {
+  width: 400px;
+  height: 60px;
+  background: #FFFFFF;
+  box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.11);
+  border-radius: 15px;
+  outline: 0px;
+  border: 0px;
+  text-indent: 25px;
+  font-weight: 500;
+  font-size: 20px;
+  letter-spacing: 0.05em;
+  color: #A4A4A4;
+}
+.restaurantsExamples {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  padding: 0px 125px;
+  margin-bottom: 125px;
+  width: 100%;
+  min-height: 80vh;
+}
+.restaurantExample {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  width: 100%;
+  max-width: 275px;
+  text-align: center;
+  margin: 0px 50px;
+  margin-top: 165px;
+  text-decoration: none;
+  transition: transform 0.5s;
+}
+.restaurantExample:hover {
+  transform: translateY(-50px);
+}
+.restaurantImage {
+  width: 250px;
+  height: 265px;
+  border-radius: 15px;
+  object-fit: cover;
+}
+.restaurantHeader {
+  font-weight: 500;
+  font-size: 20px;
+  letter-spacing: 0.05em;
+  color: #6A6A6A;
+  margin-top: 50px;
+}
+.restaurantDescription {
+  letter-spacing: 0.05em;
+  font-weight: 500;
+  font-size: 15px;
+  line-height: 23px;
+  color: #C6C6C6;
+  margin-top: 25px;
+}
+.restaurantRating {
+  display: flex;
+  margin-top: 25px;
+}
+.restaurantRatingIcon {
+  fill: #82DA3D;
+  margin: 0px 4px;
+}
+.restaurantRatingIconBlank {
+  fill: rgb(211, 211, 211);
+}
+.restaurantPage {
+  display: flex;
+  margin: 115px;
+}
+.restaurantGallery {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 50px;
+  width: 100%;
+  height: 600px;
+}
+.restaurantReviews {
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+}
+.restaurantReviewAlign {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  width: 100%;
+  max-width: 500px;
+}
+.galleryImage {
+  border-radius: 15px;
+  overflow: hidden;
+}
+.galleryImage1 {
+  grid-column-start: 1;
+  grid-column-end: 1;
+  grid-row-start: 1;
+  grid-row-end: 4;
+}
+.galleryImage2 {
+  grid-column-start: 2;
+  grid-column-end: 2;
+  grid-row-start: 2;
+  grid-row-end: 4;
+}
+.galleryImage3 {
+  grid-column-start: 1;
+  grid-column-end: 1;
+  grid-row-start: 4;
+  grid-row-end: 6;
+}
+.galleryImage4 {
+  grid-column-start: 2;
+  grid-column-end: 2;
+  grid-row-start: 4;
+  grid-row-end: 7;
+}
+.restaurantReviews h1 {
+  font-weight: 500;
+  font-size: 35px;
+  line-height: 42px;
+  letter-spacing: 0.05em;
+  color: #3E3E3E;
+}
+.restaurantReviewSection {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  margin-top: 75px;
+  width: 100%;
+}
+.restaurantReviewHeader {
+  font-weight: 500;
+  font-size: 25px;
+  line-height: 30px;
+  letter-spacing: 0.05em;
+  color: #505050;
+}
+.restaurantReviewItem {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  margin-top: 40px;
+}
+.restaurantReviewIcon {
+  font-weight: 900;
+  font-size: 25px;
+  color: #82DA3D;
+  margin-right: 20px;
+}
+.restaurantReviewIconX {
+  font-weight: 900;
+  font-size: 25px;
+  color: #da3d3d;
+  margin-right: 20px;
+}
+.restaurantReviewItem p {
+  font-weight: 700;
+  font-size: 15px;
+  line-height: 18px;
+  color: #CECECE;
+}
+.galleryImageSrc {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+@media screen and (max-width: 1400px) {
+  .restaurantGallery {
+    display: block;
+    height: initial;
+    margin-right: 100px;
+  }
+  .galleryImage {
+    margin-bottom: 100px;
+  }
+  .galleryImage  {
+    height: 200px;
+  }
+}
+@media screen and (max-width: 1000px) {
+  .restaurantPage {
+    flex-flow: column;
+  }
+  .restaurantReviews {
+    justify-content: center;
+  }
+  .restaurantGallery {
+    margin: 0px;
+  }
+}
+@media screen and (max-width: 600px) {
+  .restaurantPage {
+    margin: 0px 25px;
+    margin-top: 100px;
+    margin-bottom: 200px;
+  }
+}
+@media screen and (max-width: 400px) {
+  .restaurantReviewHeader {
+    font-size: 15px;
+    line-height: 25px;
+  }
+  .restaurantReviewItem p {
+    font-size: 13px;
+  }
+}
+@media screen and (max-width: 500px) {
+  .restaurantsExamples {
+    padding: 0px;
+  }
+  .restaurantExample {
+    margin: 0px;
+    margin-top: 165px;
+  }
+  .restaurantSearch {
+    width: 250px;
+  }
+}
+.errorMain {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  margin-top: 200px;
+  margin-bottom: 200px;
+}
+.errorMain h1 {
+  font-size: 125px;
+  color: #999999;
+}
+.errorMain h1 span {
+  color: #82DA3D;
+}
+.errorMain p {
+  font-weight: 600;
+  font-size: 30px;
+  letter-spacing: 0.1em;
+  color: #C6C6C6;
+  margin-top: 25px;
+}
+.errorMainButton {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 250px;
+  height: 50px;
+  border: 2px solid #82DA3D;
+  border-radius: 100px;
+  color: #505050;
+  font-weight: 700;
+  font-size: 20px;
+  margin-top: 75px;
+  cursor: pointer;
+  transition: color 0.5s, background 0.5s;
+  text-decoration: none;
+}
+.errorMainButton:hover {
+  background: #82DA3D;
+  color: #fff;
 }
